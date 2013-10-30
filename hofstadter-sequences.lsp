@@ -13,11 +13,11 @@
       0
     (- n (hofstadter-h (hofstadter-h (hofstadter-h (- n 1)))))))
 
-(defun hofstadter-q (n)
-"Hofstadter Q sequence"
+(defun hofstadter-u (n)
+"Hofstadter U sequence (The sequence formerly known as Q sequence)"
   (if (< n 3)
       1
-    (+ (hofstadter-q (- n (hofstadter-q (- n 1)))) (hofstadter-q (- n (hofstadter-q (- n 2)))))))
+    (+ (hofstadter-u (- n (hofstadter-u (- n 1)))) (hofstadter-u (- n (hofstadter-u (- n 2)))))))
 
 ;; TODO Write a macro to define the two sequences in one time
 (defun hofstadter-f (n)
@@ -37,6 +37,14 @@
 	(if (< n 3)
 	  1
 	(+ (hofstadter-conway (hofstadter-conway (- n 1))) (hofstadter-conway (- n (hofstadter-conway (- n 1)))))))
+
+;; TODO Make this work
+#|(defmacro hofstadter-q (r s n)
+	"A macro to generate Hofstadter-Q sequences (given r and s parameters)"
+	;; Put a bunch of asserts here
+	`(if (<= 1 ,n ,s)
+		1
+		(+ (hofstadter-q (- ,n hofstadter-q (- ,n ,r))) (hofstadter-q (- ,n (hofstadter (- ,n ,s) ))))))|#
 	
 ;; Test functions
 (defmacro test (seq &optional (n 15))
