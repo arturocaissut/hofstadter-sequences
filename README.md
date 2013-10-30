@@ -1,7 +1,7 @@
 hofstadter-sequences
 ====================
 
-A Common LISP library for the Hofstadter Sequences
+A Common LISP library for the Hofstadter Sequences. Predictably enough, you can find a simple definition of those here: http://en.wikipedia.org/wiki/Hofstadter_sequence
 
 This project is intended:
 a) As a LISP learning exercise for me (and any interested fellow);
