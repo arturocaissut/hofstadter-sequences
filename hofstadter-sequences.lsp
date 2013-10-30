@@ -19,6 +19,22 @@
     (+ (hofstadter-q (- n (hofstadter-q (- n 1)))) (hofstadter-q (- n (hofstadter-q (- n 2)))))))
 
 ;; Test functions
-(defmacro run-test (seq n)
+(defmacro test (seq n)
 "A (somehow silly) macro to test the sequences"
-`(loop for i from 0 to ,n do (format t "~a ~d: ~d~%" ',seq i (,seq i))))
+	`(loop for i from 0 to ,n do (format t "~a ~d: ~d~%" ',seq i (,seq i))))
+
+;; TODO Convert into a macro-writing macro	
+(defun test-sequence (seq n)
+	(format t "~a, first ~d values: " (cadr seq) n )
+	(loop for i from 1 to n do (format t "~a "(funcall seq i)))
+	(format t "~%"))
+
+(defun test-all (&optional (rep 15))
+	(format t "Testing Hofstadter sequences")
+	(format t "~%")
+	(test-sequence #'hofstadter-g n)
+	(format t "~%")
+	(test-sequence #'hofstadter-h n)
+	(format t "~%")
+	(test-sequence #'hofstadter-q n)
+	(format t "~%")))
