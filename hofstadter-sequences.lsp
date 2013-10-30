@@ -1,5 +1,6 @@
 ;;; The Hofstadter Sequences (plus utilities)
 
+;;TODO Write assert where needed
 (defun hofstadter-g (n)
 "Hofstadter G sequence"
   (if (< n 1)
