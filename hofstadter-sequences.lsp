@@ -1,4 +1,4 @@
-;;; The Hofstadter Sequences (plus utils)
+;;; The Hofstadter Sequences (plus utilities)
 
 (defun hofstadter-g (n)
 "Hofstadter G sequence"
