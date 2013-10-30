@@ -1,5 +1,4 @@
 ;;; Various utilities
-(
 
 ;; Plotting
 (defun plot (fn min max step)
