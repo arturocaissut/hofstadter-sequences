@@ -1,6 +1,7 @@
 ;;; The Hofstadter Sequences (plus utilities)
 
-;;TODO Write assert where needed
+;; TODO Write assert where needed
+
 (defun hofstadter-g (n)
 "Hofstadter G sequence"
   (if (< n 1)
@@ -56,15 +57,17 @@
 	(format t "~a, first ~d values: " (cadr seq) n )
 	(loop for i from 1 to n do (format t "~a "(funcall seq i)))
 	(format t "~%"))
-	
-(defun test-all (&optional (n 15))
+
+;; TODO Make this a macro and/or optimize it
+(defun test-all (functions &optional (n 15))
 	(format t "Testing Hofstadter sequences")
 	(format t "~%")
+	(mapc test-sequence functions)
 	(test-sequence #'hofstadter-g n)
 	(format t "~%")
 	(test-sequence #'hofstadter-h n)
 	(format t "~%")
-	(test-sequence #'hofstadter-q n)
+	(test-sequence #'hofstadter-u n)
 	(format t "~%")
 	(test-sequence #'hofstadter-f n)
 	(format t "~%")
