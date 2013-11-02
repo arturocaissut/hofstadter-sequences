@@ -66,7 +66,7 @@
 	(format t "~a, first ~d values: " (cadr seq) n )
 	(loop for i from 1 to n do (format t "~a "(funcall seq i)))
 	(format t "~%"))
-
+	
 ;; TODO Make this a macro and/or optimize it
 (defun test-all (&optional (n 15))
 	(format t "Testing Hofstadter sequences")
@@ -87,3 +87,36 @@
 	(format t "~%")
 	(test-sequence #'hofstadter-pinn n)
 	(format t "~%"))
+
+;; Write to a file
+(defun write-test ()
+(defvar n 50)
+(with-open-file (str "sequence_test_output.txt"
+					 :direction :output
+                     :if-exists :supersede
+                     :if-does-not-exist :create)
+  (format str "Testing Hofstadter sequences")
+	(format str "~%")
+	(format str "Hofstadter G, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-g i)))	(format str "~%")
+	(format str "Hofstadter H, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-u i)))	(format str "~%")
+	(format str "~%")
+	(format str "Hofstadter Q, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-q i)))	(format str "~%")
+	(format str "~%")
+	(format str "Hofstadter U, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-U i)))	(format str "~%")
+	(format str "~%")
+	(format str "Hofstadter F, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-f i)))	(format str "~%")
+	(format str "~%")
+	(format str "Hofstadter M, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-m i)))	(format str "~%")
+	(format str "~%")
+	(format str "Hofstadter-Conway, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-conway i)))	(format str "~%")
+	(format str "~%")
+	(format str "Hofstadter Pinn, first ~d values: " n )
+	(loop for i from 1 to n do (format str "~a "(hofstadter-pinn i)))	(format str "~%")
+	(format str "~%")))
